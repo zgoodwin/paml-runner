@@ -7,7 +7,8 @@ Determines whether positive selection is acting on a gene.
 
 - [x] Add scripts to repository
 - [x] Re-write bash scripts in python
-- [ ] Re-organize the PAML parser source code
+- [x] Re-organize the PAML parser source code
+- [ ] Add support for foreground and background rate calculation
 - [ ] Improve error handling for all scripts
 - [ ] Update comments
 - [ ] Update documentation

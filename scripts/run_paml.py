@@ -17,12 +17,12 @@ def runProcess(process_string):
 def writeOutput(stdout, stderr, gene):
 	with open(gene + ".stdout", 'w') as o:
 		for line in stdout:
-			o.write(line)
+			o.write(str(line))
 	o.close()
 	
 	with open(gene + ".stderr", 'w') as e:
 		for line in stderr:
-			e.write(line)
+			e.write(str(line))
 	e.close()
 	return
 
@@ -36,9 +36,10 @@ def main():
 	paml_executable = args[2]
 
 	chdir(model)
-	for g in listdir('./'):
+	for g in glob.glob('*'):
 		chdir(g)
 		ctlFile = glob.glob('./*.ctl')[0]
+		print("Now running PAML on " + g + "...")
 		[out, err] = runProcess(paml_executable + " " + ctlFile)
 		writeOutput(out,err,g)
 		chdir('../')
