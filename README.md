@@ -31,6 +31,7 @@ python parse_paml.py M8/ M7/ m8_m7_results.txt
 - [x] Add scripts to repository
 - [x] Re-write bash scripts in python
 - [x] Re-organize the PAML parser source code
+- [ ] Add plotting scripts
 - [ ] Add support for local dN/dS calculation
 - [ ] Add support for foreground and background rate calculation
 - [ ] Improve error handling for all scripts

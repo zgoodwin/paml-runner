@@ -128,8 +128,7 @@ def parse_rates(altHypDir, nullHypDir):
 		altHypDir: Path to the alternative hypothesis folder
 		nullHypDir: Path to the null hypothesis folder
 	Returns:
-		rates: a pandas data frame containing all of the statistics
-	Raises:
+		results_frame: a pandas data frame containing all of the statistics
 	"""
 
 	dnList = []
