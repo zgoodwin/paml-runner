@@ -1,5 +1,5 @@
 # paml-runner
-Determines whether positive selection is acting on one or more genes by comparing their non-synonymous substitution rate (dN) with their synonymous substitution rate (dS).
+Determines whether positive selection is acting on one or more genes by comparing their non-synonymous substitution rate (dN) with their synonymous substitution rate (dS). These rates are calculated by aligning genes from many species and measuring dN and dS.
 
 [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) is a suite of tools used to measure whether positive selection is acting on genes and proteins. Unfortunately, it is difficult to run PAML on more than a few genes at a time. Hence, I wrote this set of scripts to automate the running of PAML on many genes. These scripts were used for an analysis of positive selection in a set of genes required for skin development \([Goodwin et al 2017](http://journal.frontiersin.org/article/10.3389/fgene.2016.00227/full)\). 
 
@@ -34,6 +34,7 @@ python parse_paml.py M8/ M7/ m8_m7_results.txt
 - [ ] Add plotting scripts
 - [ ] Add support for local dN/dS calculation
 - [ ] Add support for foreground and background rate calculation
+- [ ] Add support for calculating the percentage of sites with a specific dN/dS value
 - [ ] Improve error handling for all scripts
 - [x] Update comments
 - [x] Update documentation
