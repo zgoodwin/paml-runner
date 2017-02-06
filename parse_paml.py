@@ -1,7 +1,7 @@
 """
 
 Date Written: 1/12/2017
-Last Edited:  1/12/2017
+Last Edited:  2/6/2017
 
 @author: Zane Goodwin
 """
@@ -82,6 +82,15 @@ def divideMatrix(matrixA, matrixB):
 
 
 def calculateAverageRates(m):
+	"""Determine the average dN or dS rate for all species, for a given gene
+	
+	Args:
+		m: The lower half of a rate matrix (dN, dS or dN/dS).
+	Returns:
+		averageRate: A single scalar (float) which representing the avearge rate
+			value for the matrix. 
+	"""
+
 	total = 0.0
 	numElements = 0.0
 	averageRate = 0.0
@@ -93,7 +102,12 @@ def calculateAverageRates(m):
 
 
 def findLikelihood(mlcFile):
-	"""Locates the likelihood value in the PAML mlc file
+	"""Locates the likelihood (lnL) value in the PAML result file
+
+	Args: 
+		mlcFile: A list of strings representing the lines of the result file.
+	Returns: 
+		lnLikelihood: The likelihood value
 	"""
 
 	lnLikelihood = 0.0
