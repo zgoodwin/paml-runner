@@ -1,7 +1,17 @@
 # paml-runner
-Determines whether positive selection is acting on one or more genes by comparing their non-synonymous substitution rate (dN) with their synonymous substitution rate (dS). These rates are calculated by aligning genes from many species and measuring dN and dS.
+This is a set of scripts that determines whether positive selection is acting on a gene by comparing the gene's non-synonymous substitution rate (dN) with its synonymous substitution rate (dS). These rates are calculated by aligning genes from many species and measuring dN and dS. Zhiheng Yang has written a great review on how to interpret these rates \([Open access article here](http://abacus.gene.ucl.ac.uk/ziheng/pdf/2000YangBielawskiTREEv15p496.pdf)\).
 
-[PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) is a suite of tools used to measure whether positive selection is acting on genes and proteins. Unfortunately, it is difficult to run PAML on more than a few genes at a time. Hence, I wrote this set of scripts to automate the running of PAML on many genes. These scripts were used for an analysis of positive selection in a set of genes required for skin development \([Goodwin et al 2017](http://journal.frontiersin.org/article/10.3389/fgene.2016.00227/full)\). 
+[PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) is a suite of tools used to measure whether positive selection is acting on a gene using a statistical. PAML measures substitution rates (dN and dS) and fits statistical models of positive selection and negative selection to the data. One can then determine which model is more likely using a chi-squared test. It is somewhat tedious to run PAML on more than a few genes at a time. Hence, I wrote this set of scripts to automate the running of PAML on many genes. These scripts were used for an analysis of positive selection in a set of genes required for skin development \([Goodwin et al 2017](http://journal.frontiersin.org/article/10.3389/fgene.2016.00227/full)\). 
+
+For more information on PAML and what it does, you can read its documentation [here](http://abacus.gene.ucl.ac.uk/software/pamlDOC.pdf).
+
+## Input file formats
+
+To run this set of scripts, you need a codon alignment (provided in the ```alignments``` folder)
+
+* _Alignments:_ A folder containing alignment files, formatted in the Phylip interleaved format. \([See here.](http://evolution.genetics.washington.edu/phylip/doc/sequence.html)\)
+* _Trees:_ Newick format \([See here.](http://evolution.genetics.washington.edu/phylip/newicktree.html)\)
+* _Control files:_ The control (or model configuration file) specifies the parameters for each of the PAML models that test for positive selection on a gene. You can create a control file for each PAML model that you would like to run. More information about models and control files can be found in the [PAML documentation](http://abacus.gene.ucl.ac.uk/software/pamlDOC.pdf).
 
 ## Example
 
@@ -19,6 +29,16 @@ python run_paml.py M7 /Users/zanegoodwin/Desktop/paml4.8/bin/codeml
 # Parse the results and calculate p-values
 python parse_paml.py M8/ M7/ m8_m7_results.txt
 ```
+## parse_paml.py output file format
+
+1. alt_likelihood - The likelihood value of the positive selection model.
+2. chi2_stat - The chi-squared statistic (-2\*(Null-alt))
+3. dN - The average number of non-synonymous substitutions in the alignment, per alignment site.
+4. dN_dS - The average number of non-synoynymous substitutions per synonymous substitution site.
+5. dS - The average number of synomnymous substitutions in the alignment, per alignment site. 
+6. genes - Gene name
+7. null_likelihood - The likelihood value of the negative/neutral selection model.
+8. pval - Probability that the null model (negative selection) fits the data. 
 
 ## Dependencies
 
